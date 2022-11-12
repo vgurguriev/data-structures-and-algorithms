@@ -19,12 +19,12 @@ public class SecondMinValue {
         int min = Integer.MAX_VALUE;
         int secondMin = Integer.MAX_VALUE;
 
-        for (int j : arr) {
-            if (j < min) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
                 secondMin = min;
-                min = j;
-            } else if (j < secondMin && j != min) {
-                secondMin = j;
+                min = arr[i];
+            } else if (arr[i] < secondMin && arr[i] != min) {
+                secondMin = arr[i];
             }
         }
         return secondMin;
