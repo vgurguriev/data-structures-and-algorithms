@@ -27,10 +27,9 @@ public class SinglyLinkedList {
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
 
-        sll.printSinglyLinkedList();
     }
 
-    private void printSinglyLinkedList() {
+    public void print() {
         ListNode current = head;
 
         while (current != null) {
@@ -39,5 +38,23 @@ public class SinglyLinkedList {
         }
         System.out.print("null");
     }
+
+    public int length() {
+        if (head == null) {
+            return 0;
+        }
+
+        int count = 0;
+
+        ListNode current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+
+        return count;
+    }
+
+
 
 }
