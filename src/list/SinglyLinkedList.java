@@ -27,6 +27,17 @@ public class SinglyLinkedList {
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
 
-        System.out.println(sll);
+        sll.printSinglyLinkedList();
     }
+
+    private void printSinglyLinkedList() {
+        ListNode current = head;
+
+        while (current != null) {
+            System.out.print(current.data + " --> ");
+            current = current.next;
+        }
+        System.out.print("null");
+    }
+
 }
