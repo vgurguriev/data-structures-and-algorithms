@@ -29,6 +29,29 @@ public class SinglyLinkedList {
 
     }
 
+    public void insertLast(int value) {
+
+        ListNode newNode = new ListNode(value);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        ListNode current = newNode;
+
+        while (null != current.next) {
+            current = current.next;
+        }
+
+        current.next = newNode;
+    }
+
+    public void insertFirst(int value) {
+        ListNode newNode = new ListNode(value);
+        newNode.next = head;
+        head = newNode;
+    }
+
     public void print() {
         ListNode current = head;
 
