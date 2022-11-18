@@ -31,6 +31,25 @@ public class SinglyLinkedList {
 
     }
 
+    public ListNode deleteLast() {
+        if (head == null || head.next == null) {
+            ListNode temp = head;
+            head = null;
+            return temp;
+        }
+
+        ListNode current = head;
+        ListNode previous = null;
+
+        while (current.next != null) {
+            previous = current;
+            current = current.next;
+        }
+
+        previous.next = null;
+        return current;
+    }
+
     public ListNode deleteFirst() {
         if (head == null) {
             return null;
