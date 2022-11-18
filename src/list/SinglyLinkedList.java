@@ -1,5 +1,7 @@
 package list;
 
+import java.util.List;
+
 public class SinglyLinkedList {
     private ListNode head;
 
@@ -26,6 +28,19 @@ public class SinglyLinkedList {
         sll.head.next = second; // 1 --> 2
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
+
+    }
+
+    public ListNode deleteFirst() {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode temp = head;
+        head = head.next;
+        temp.next = null;
+
+        return temp;
 
     }
 
