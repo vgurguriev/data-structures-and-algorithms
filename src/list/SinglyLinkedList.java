@@ -32,6 +32,24 @@ public class SinglyLinkedList {
 
     }
 
+    public boolean find(ListNode head, int searchKey) {
+        if (head == null) {
+            return false;
+        }
+
+        ListNode current = head;
+
+        while (current != null) {
+            if (current.data == searchKey) {
+                return true;
+            }
+
+            current = current.next;
+        }
+
+        return false;
+    }
+
     public ListNode delete(int position) {
         if (position == 1) {
             ListNode temp = head;
