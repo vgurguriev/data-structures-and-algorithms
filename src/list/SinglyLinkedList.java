@@ -17,20 +17,53 @@ public class SinglyLinkedList {
     }
 
     public static void main(String[] args) {
+        SinglyLinkedList ssl = new SinglyLinkedList();
+
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);
         ListNode third = new ListNode(3);
         ListNode fourth = new ListNode(4);
 
         // connect them to form a chain
-
+        ssl.head = head;
         head.next = second; // 1 --> 2
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
 
-        SinglyLinkedList list = new SinglyLinkedList();
-        list.print(head);
 
+
+
+    }
+
+    public ListNode getNthNodeFromEnd(int n) {
+        if (head == null) {
+            return null;
+        }
+
+        if (n <= 0) {
+            throw new IllegalArgumentException("Invalid value: n = " + n);
+        }
+
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+
+        int count = 0;
+
+        while (count < n) {
+            if (refPtr == null) {
+                throw new IllegalArgumentException(n + " is greater than the number of nodes in the list");
+            }
+
+            refPtr = refPtr.next;
+            count++;
+        }
+
+        while (refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+
+        return mainPtr;
     }
 
     public ListNode getMiddleNode() {
