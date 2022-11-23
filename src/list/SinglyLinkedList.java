@@ -17,19 +17,40 @@ public class SinglyLinkedList {
     }
 
     public static void main(String[] args) {
-        SinglyLinkedList sll = new SinglyLinkedList(); // head is null
-        sll.head = new ListNode(1);
-
+        ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);
         ListNode third = new ListNode(3);
         ListNode fourth = new ListNode(4);
 
         // connect them to form a chain
 
-        sll.head.next = second; // 1 --> 2
+        head.next = second; // 1 --> 2
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
 
+        SinglyLinkedList list = new SinglyLinkedList();
+        list.print(head);
+
+    }
+
+    public ListNode reverse(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode previous = null;
+        ListNode current = head;
+        ListNode next = null;
+
+
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        return previous;
     }
 
     public boolean find(ListNode head, int searchKey) {
@@ -148,7 +169,7 @@ public class SinglyLinkedList {
         head = newNode;
     }
 
-    public void print() {
+    public void print(ListNode head) {
         ListNode current = head;
 
         while (current != null) {
@@ -173,7 +194,6 @@ public class SinglyLinkedList {
 
         return count;
     }
-
 
 
 }
