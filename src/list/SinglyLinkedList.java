@@ -20,8 +20,8 @@ public class SinglyLinkedList {
         SinglyLinkedList ssl = new SinglyLinkedList();
 
         ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(1);
         ListNode fourth = new ListNode(4);
 
         // connect them to form a chain
@@ -30,9 +30,28 @@ public class SinglyLinkedList {
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
 
+        ssl.removeDuplicates();
+        ssl.print(head);
 
 
 
+
+    }
+
+    public void removeDuplicates() {
+        if (head == null) {
+            return;
+        }
+
+        ListNode current = head;
+
+        while (current.next != null) {
+            if (current.data == current.next.data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
     }
 
     public ListNode getNthNodeFromEnd(int n) {
