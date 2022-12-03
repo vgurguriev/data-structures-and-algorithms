@@ -20,22 +20,38 @@ public class SinglyLinkedList {
         SinglyLinkedList ssl = new SinglyLinkedList();
 
         ListNode head = new ListNode(1);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(1);
-        ListNode fourth = new ListNode(4);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(5);
+        ListNode fourth = new ListNode(6);
 
         // connect them to form a chain
         ssl.head = head;
         head.next = second; // 1 --> 2
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
-
-        ssl.removeDuplicates();
         ssl.print(head);
+        ssl.insertInSortedList(3);
+        ssl.print(head);
+    }
 
 
+    public void insertInSortedList(int value) {
+        ListNode newNode = new ListNode(value);
 
+        if (head == null) {
+            return;
+        }
 
+        ListNode current = head;
+        ListNode temp = null;
+
+        while (current != null && current.data < newNode.data) {
+            temp = current;
+            current = current.next;
+        }
+
+        newNode.next = current;
+        temp.next = newNode;
     }
 
     public void removeDuplicates() {
