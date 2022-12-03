@@ -29,9 +29,10 @@ public class SinglyLinkedList {
         head.next = second; // 1 --> 2
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
-        ssl.print(head);
-        ssl.insertInSortedList(3);
-        ssl.print(head);
+        ssl.print();
+        System.out.println();
+        ssl.deleteNode(8);
+        ssl.print();
     }
 
 
@@ -176,6 +177,27 @@ public class SinglyLinkedList {
         }
     }
 
+    public void deleteNode(int value) {
+        ListNode current = head;
+        ListNode temp = null;
+
+        if (current.data == value) {
+            head = current.next;
+            return;
+        }
+
+        while (current != null && current.data != value) {
+            temp = current;
+            current = current.next;
+        }
+
+        if (current == null) {
+            return;
+        }
+
+        temp.next = current.next;
+    }
+
     public ListNode deleteLast() {
         if (head == null || head.next == null) {
             ListNode temp = head;
@@ -253,7 +275,7 @@ public class SinglyLinkedList {
         head = newNode;
     }
 
-    public void print(ListNode head) {
+    public void print() {
         ListNode current = head;
 
         while (current != null) {
