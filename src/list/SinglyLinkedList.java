@@ -30,11 +30,23 @@ public class SinglyLinkedList {
         second.next = third; // 1 --> 2 --> 3
         third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
         ssl.print();
-        System.out.println();
-        ssl.deleteNode(8);
-        ssl.print();
     }
 
+    public boolean containsLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && slowPtr != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if (slowPtr == fastPtr) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public void insertInSortedList(int value) {
         ListNode newNode = new ListNode(value);
