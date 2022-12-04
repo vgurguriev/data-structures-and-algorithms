@@ -20,10 +20,9 @@ public class SinglyLinkedList {
         SinglyLinkedList ssl = new SinglyLinkedList();
 
         ssl.createLoopInSinglyLinkedList();
-        System.out.println(ssl.containsLoop());
     }
 
-    public boolean containsLoop() {
+    public ListNode startPointerInLoop() {
         ListNode fastPtr = head;
         ListNode slowPtr = head;
 
@@ -32,11 +31,22 @@ public class SinglyLinkedList {
             slowPtr = slowPtr.next;
 
             if (slowPtr == fastPtr) {
-                return true;
+                return getStartingPoint(slowPtr);
             }
         }
 
-        return false;
+        return null;
+    }
+
+    private ListNode getStartingPoint(ListNode slowPtr) {
+        ListNode temp = head;
+
+        while (temp != slowPtr) {
+            temp = temp.next;
+            slowPtr = slowPtr.next;
+        }
+
+        return temp;
     }
 
     public void createLoopInSinglyLinkedList() {
