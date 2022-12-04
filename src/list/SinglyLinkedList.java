@@ -19,17 +19,8 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
         SinglyLinkedList ssl = new SinglyLinkedList();
 
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(5);
-        ListNode fourth = new ListNode(6);
-
-        // connect them to form a chain
-        ssl.head = head;
-        head.next = second; // 1 --> 2
-        second.next = third; // 1 --> 2 --> 3
-        third.next = fourth; // 1 --> 2 --> 3 --> 4 --> null
-        ssl.print();
+        ssl.createLoopInSinglyLinkedList();
+        System.out.println(ssl.containsLoop());
     }
 
     public boolean containsLoop() {
@@ -46,6 +37,23 @@ public class SinglyLinkedList {
         }
 
         return false;
+    }
+
+    public void createLoopInSinglyLinkedList() {
+        ListNode first = new ListNode(1);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(1);
+        ListNode fourth = new ListNode(1);
+        ListNode fifth = new ListNode(1);
+        ListNode sixth = new ListNode(1);
+
+        head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = null;
     }
 
     public void insertInSortedList(int value) {
