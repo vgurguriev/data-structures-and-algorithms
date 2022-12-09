@@ -38,6 +38,17 @@ public class SinglyLinkedList {
         return null;
     }
 
+    private void removeLoop(ListNode slowPtr) {
+        ListNode temp = head;
+
+        while (temp.next != slowPtr.next) {
+            temp = temp.next;
+            slowPtr = slowPtr.next;
+        }
+
+        slowPtr.next = null;
+    }
+
     private ListNode getStartingPoint(ListNode slowPtr) {
         ListNode temp = head;
 
