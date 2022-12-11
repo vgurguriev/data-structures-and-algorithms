@@ -19,7 +19,25 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
         SinglyLinkedList ssl = new SinglyLinkedList();
 
-        ssl.createLoopInSinglyLinkedList();
+        ssl.insertLast(1);
+        ssl.insertLast(3);
+        ssl.insertLast(5);
+        ssl.insertLast(7);
+
+        SinglyLinkedList ssl1 = new SinglyLinkedList();
+
+        ssl1.insertLast(2);
+        ssl1.insertLast(4);
+        ssl1.insertLast(6);
+        ssl1.insertLast(8);
+
+        SinglyLinkedList result = new SinglyLinkedList();
+
+        ssl.print();
+        ssl1.print();
+        
+        result.head = merge(ssl1.head, ssl.head);
+        result.print();
     }
 
     public ListNode startPointerInLoop() {
@@ -301,7 +319,7 @@ public class SinglyLinkedList {
             return;
         }
 
-        ListNode current = newNode;
+        ListNode current = head;
 
         while (null != current.next) {
             current = current.next;
@@ -342,5 +360,29 @@ public class SinglyLinkedList {
         return count;
     }
 
+    public static ListNode merge(ListNode a, ListNode b) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        while (a != null && b != null) {
+            if (a.data <= b.data) {
+                tail.next = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                b = b.next;
+            }
+
+            tail = tail.next;
+        }
+
+        if (a == null) {
+            tail.next = b;
+        } else {
+            tail.next = a;
+        }
+
+        return dummy.next;
+    }
 
 }
