@@ -21,22 +21,23 @@ public class SinglyLinkedList {
 
         ssl.insertLast(1);
         ssl.insertLast(3);
-        ssl.insertLast(5);
-        ssl.insertLast(7);
+        ssl.insertLast(1);
 
         SinglyLinkedList ssl1 = new SinglyLinkedList();
 
         ssl1.insertLast(2);
-        ssl1.insertLast(4);
-        ssl1.insertLast(6);
         ssl1.insertLast(8);
+        ssl1.insertLast(5);
+
 
         SinglyLinkedList result = new SinglyLinkedList();
 
         ssl.print();
+        System.out.println();
         ssl1.print();
+        System.out.println();
         
-        result.head = merge(ssl1.head, ssl.head);
+        result.head = findSum(ssl1.head, ssl.head);
         result.print();
     }
 
@@ -385,4 +386,34 @@ public class SinglyLinkedList {
         return dummy.next;
     }
 
+    public static ListNode findSum(ListNode a, ListNode b) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+
+        int carry = 0;
+
+        while (a != null || b != null) {
+            int x = (a != null) ? a.data : 0;
+            int y = (b != null) ? b.data : 0;
+
+            int sum = carry + x + y;
+            carry = sum / 10;
+            tail.next = new ListNode(sum % 10);
+            tail = tail.next;
+
+            if (a != null) {
+                a = a.next;
+            }
+
+            if (b != null) {
+                b = b.next;
+            }
+        }
+
+        if (carry > 0) {
+            tail.next = new ListNode(carry);
+        }
+
+        return dummy.next;
+    }
 }
