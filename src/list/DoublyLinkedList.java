@@ -59,4 +59,8 @@ public class DoublyLinkedList {
 
         System.out.println("null");
     }
+
+    public void insertLast(int value) {
+
+    }
 }
