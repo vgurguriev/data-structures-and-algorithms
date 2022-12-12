@@ -29,4 +29,38 @@ public class DoublyLinkedList {
             return length;
         }
     }
+
+    public void print() {
+        if (head == null) {
+            return;
+        }
+
+        ListNode temp = head;
+
+        while (temp != null) {
+            System.out.println(temp.data + " --> ");
+            temp = temp.next;
+        }
+
+        System.out.println("null");
+    }
+
+    public void printReversed() {
+        if (head == null) {
+            return;
+        }
+
+        ListNode temp = head;
+
+        while (temp != null) {
+            System.out.println(temp.data + " --> ");
+            temp = temp.previous;
+        }
+
+        System.out.println("null");
+    }
+
+    public void insertLast(int value) {
+        ListNode newNode = new ListNode(value);
+    }
 }
