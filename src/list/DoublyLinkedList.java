@@ -61,6 +61,6 @@ public class DoublyLinkedList {
     }
 
     public void insertLast(int value) {
-
+        ListNode newNode = new ListNode(value);
     }
 }
