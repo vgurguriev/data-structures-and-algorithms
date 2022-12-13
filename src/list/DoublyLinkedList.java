@@ -72,6 +72,16 @@ public class DoublyLinkedList {
 
     public void insertLast(int value) {
         ListNode newNode = new ListNode(value);
+
+        if (isEmpty()) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.previous = tail;
+        }
+
+        tail = newNode;
+        length++;
     }
 
     public void insertFirst(int value) {
@@ -87,6 +97,4 @@ public class DoublyLinkedList {
         head = newNode;
         length++;
     }
-
-//    test
 }
