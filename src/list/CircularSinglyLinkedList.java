@@ -44,5 +44,21 @@ public class CircularSinglyLinkedList {
     public static void main(String[] args) {
         CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
         csll.createCircularLinkedList();
+        csll.print();
+    }
+
+    public void print() {
+        if (last == null) {
+            return;
+        }
+
+        ListNode first = last.next;
+
+        while (first != last) {
+            System.out.print(first.data + " ");
+            first = first.next;
+        }
+
+        System.out.println(first.data);
     }
 }
