@@ -1,5 +1,7 @@
 package list;
 
+import java.util.NoSuchElementException;
+
 public class CircularSinglyLinkedList {
     private ListNode last;
     private int length;
@@ -39,14 +41,14 @@ public class CircularSinglyLinkedList {
 
         last = fourth;
 
+        length = 4;
     }
 
     public static void main(String[] args) {
         CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
         csll.createCircularLinkedList();
         csll.print();
-        csll.insertFirst(0);
-        csll.insertLast(99);
+        csll.removeFirst();
         csll.print();
     }
 
@@ -91,5 +93,24 @@ public class CircularSinglyLinkedList {
         }
 
         length++;
+    }
+
+    public ListNode removeFirst() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Circular Singly Linked List is already empty.");
+        }
+
+        ListNode temp = last.next;
+
+        if (last.next == last) {
+            last = null;
+        } else {
+            last.next = temp.next;
+        }
+
+        temp.next = null;
+        length--;
+
+        return temp;
     }
 }
