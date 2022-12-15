@@ -61,5 +61,17 @@ public class CircularSinglyLinkedList {
 
         System.out.println(first.data);
     }
-//
+
+    public void insertFirst(int value) {
+        ListNode temp = new ListNode(value);
+
+        if (last == null) {
+            last = temp;
+        } else {
+            temp.next = last.next;
+        }
+
+        last.next = temp;
+        length++;
+    }
 }
