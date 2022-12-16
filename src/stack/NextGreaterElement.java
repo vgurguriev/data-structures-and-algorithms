@@ -12,7 +12,6 @@ public class NextGreaterElement {
         for (int r : result) {
             System.out.print(r + " ");
         }
-
     }
 
     public static int[] nextGreaterElement(int[] arr) {
