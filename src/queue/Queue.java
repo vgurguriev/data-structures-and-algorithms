@@ -1,5 +1,7 @@
 package queue;
 
+import java.util.NoSuchElementException;
+
 public class Queue {
     private ListNode front;
     private ListNode rear;
@@ -56,6 +58,23 @@ public class Queue {
         rear = temp;
         length++;
     }
+
+    public int delete() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is already empty.");
+        }
+
+        int result = front.data;
+        front = front.next;
+
+        if (front == null) {
+            rear = null;
+        }
+
+        length--;
+        return result;
+    }
+
     public static void main(String[] args) {
         Queue queue = new Queue();
 
