@@ -15,6 +15,27 @@ public class Queue {
         }
     }
 
+    public Queue() {
+        this.front = null;
+        this.rear = null;
+        this.length = 0;
+    }
+
+    public void print() {
+        if (isEmpty()) {
+            return;
+        }
+
+        ListNode current = front;
+
+        while (current != null) {
+            System.out.print(current.data + " --> ");
+            current = current.next;
+        }
+
+        System.out.println("null");
+    }
+
     public int length() {
         return length;
     }
@@ -32,10 +53,14 @@ public class Queue {
             rear.next = temp;
         }
 
-        rear.next = temp;
+        rear = temp;
         length++;
     }
     public static void main(String[] args) {
+        Queue queue = new Queue();
 
+        queue.add(1);
+
+        queue.print();
     }
 }
