@@ -71,9 +71,30 @@ public class BinaryTree {
         inOrderRecursive(root.right);
     }
 
+    public void inOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
+
+        while (!stack.empty() || temp != null) {
+            if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+                System.out.print(temp.data + " ");
+                temp = temp.right;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.createBinaryTree();
         binaryTree.inOrderRecursive(binaryTree.root);
+        binaryTree.inOrder(binaryTree.root);
     }
 }
