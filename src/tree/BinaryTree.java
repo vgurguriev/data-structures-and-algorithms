@@ -17,6 +17,12 @@ public class BinaryTree {
 
     private TreeNode root;
 
+    public static void main(String[] args) {
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.createBinaryTree();
+        System.out.println(binaryTree.findMax());
+    }
+
     public void createBinaryTree() {
         TreeNode first = new TreeNode(1);
         TreeNode second = new TreeNode(2);
@@ -154,13 +160,26 @@ public class BinaryTree {
         }
     }
 
-    public static void main(String[] args) {
-        BinaryTree binaryTree = new BinaryTree();
-        binaryTree.createBinaryTree();
-        binaryTree.postOrderRecursive(binaryTree.root);
-        System.out.println();
-        binaryTree.postOrder(binaryTree.root);
-        System.out.println();
-        binaryTree.levelOrder();
+    public int findMax() {
+        return findMax(root);
+    }
+
+    private int findMax(TreeNode root) {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
+
+        int result = root.data;
+        int left = findMax(root.left);
+        int right = findMax(root.right);
+
+        if (left > result) {
+            result = left;
+        }
+        if (right > result) {
+            result = right;
+        }
+
+        return result;
     }
 }
